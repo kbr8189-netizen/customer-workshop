@@ -166,7 +166,7 @@ function Guide({ onStart }: { onStart: () => void }) {
         <div className="text-sm font-bold text-blue-700">오늘의 상황</div>
         <div className="mt-1 text-lg font-extrabold">{WORKSHOP.scenario}</div>
         <p className="mt-2 text-sm leading-relaxed text-slate-600">
-          고객의 요구를 먼저 알아차리고, 요청 전에 한 걸음 더 다가가는 행동을 빈칸에 채워 봅니다.
+          민원인의 요구를 먼저 알아차리고, 요청 전에 한 걸음 더 다가가는 행동을 내 말로 자유롭게 적어 봅니다.
         </p>
       </div>
       {STEPS.map((s, i) => (
@@ -251,7 +251,7 @@ function Mine({ profile, onChange, onDone }: { profile: Profile; onChange: (p: P
       <div className="rounded-2xl bg-blue-50 p-4 text-sm leading-relaxed text-blue-900">
         <b>{WORKSHOP.scenario}</b>
         <br />
-        빈칸을 먼저 혼자 채워 보세요. 다 쓰면 아래 <b>내 답안 저장</b>을 눌러야 팀원에게 보입니다.
+        정답은 없어요. 빈칸에 들어갈 행동을 내 생각대로 자유롭게 적어 보세요. 다 쓰면 아래 <b>내 답안 저장</b>을 눌러야 팀원에게 보입니다.
       </div>
       {ITEMS.map((item, i) => (
         <div key={item.id} className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5">

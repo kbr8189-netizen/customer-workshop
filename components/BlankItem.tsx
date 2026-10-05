@@ -44,17 +44,17 @@ export function BlankInputs({
         <label key={i} className="flex items-start gap-2">
           {n > 1 && <span className="mt-2.5 w-5 shrink-0 text-center font-bold text-blue-700">{MARKS[i]}</span>}
           <textarea
-            rows={1}
+            rows={2}
             maxLength={300}
             disabled={disabled}
             value={values[i] ?? ""}
-            placeholder="빈칸에 들어갈 말"
+            placeholder="자유롭게 적어 주세요"
             onChange={(e) => {
               const next = [...values];
               next[i] = e.target.value;
               onChange(next);
             }}
-            className="field-sizing-content min-h-11 w-full resize-none rounded-xl border border-slate-300 px-3 py-2.5 text-[15px] outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 disabled:bg-slate-50"
+            className="field-sizing-content min-h-16 w-full resize-none rounded-xl border border-slate-300 px-3 py-2.5 text-[15px] outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 disabled:bg-slate-50"
           />
         </label>
       ))}
