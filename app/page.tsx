@@ -1,10 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { BookOpen, ClipboardList, Eye, EyeOff, ListChecks, PencilLine, RefreshCw, Users } from "lucide-react";
+import { ClipboardList, ListChecks, PencilLine, RefreshCw, Users } from "lucide-react";
 import { BlankInputs, Sentence } from "@/components/BlankItem";
 import {
-  EXAMPLE,
   GROUPS,
   ITEMS,
   STEPS,
@@ -15,10 +14,9 @@ import {
   type TeamAnswer,
 } from "@/lib/workshop";
 
-type Tab = "guide" | "example" | "mine" | "team";
-const TABS: { id: Tab; label: string; icon: typeof BookOpen }[] = [
+type Tab = "guide" | "mine" | "team";
+const TABS: { id: Tab; label: string; icon: typeof ListChecks }[] = [
   { id: "guide", label: "진행 안내", icon: ListChecks },
-  { id: "example", label: "예시", icon: BookOpen },
   { id: "mine", label: "개인 작성", icon: PencilLine },
   { id: "team", label: "팀 답안", icon: Users },
 ];
@@ -91,7 +89,7 @@ export default function Home() {
         />
       ) : (
         <>
-          <nav className="mb-5 grid grid-cols-4 gap-2">
+          <nav className="mb-5 grid grid-cols-3 gap-2">
             {TABS.map((t) => (
               <button
                 key={t.id}
@@ -108,7 +106,6 @@ export default function Home() {
           </nav>
 
           {tab === "guide" && <Guide onStart={() => setTab("mine")} />}
-          {tab === "example" && <Example />}
           {tab === "mine" && <Mine profile={profile} onChange={update} onDone={() => setTab("team")} />}
           {tab === "team" && <Team profile={profile} />}
         </>
@@ -183,41 +180,6 @@ function Guide({ onStart }: { onStart: () => void }) {
       <button onClick={onStart} className="w-full rounded-xl bg-blue-700 py-3.5 font-bold text-white hover:bg-blue-800">
         개인 작성 시작하기
       </button>
-    </section>
-  );
-}
-
-function Example() {
-  const [shown, setShown] = useState<Record<number, boolean>>({});
-  const all = EXAMPLE.items.every((it, i) => !it.answers || shown[i]);
-  return (
-    <section className="space-y-3">
-      <div className="flex items-center justify-between gap-3">
-        <div className="font-extrabold">예시 · {EXAMPLE.title}</div>
-        <button
-          onClick={() => setShown(all ? {} : Object.fromEntries(EXAMPLE.items.map((_, i) => [i, true])))}
-          className={`${btn} ${btnOff} flex shrink-0 items-center gap-1 whitespace-nowrap px-3 py-2 text-sm`}
-        >
-          {all ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-          {all ? "정답 숨기기" : "정답 보기"}
-        </button>
-      </div>
-      {EXAMPLE.items.map((it, i) => (
-        <div key={i} className="rounded-2xl border border-slate-200 bg-white p-4">
-          <div className="flex gap-2">
-            <span className="font-extrabold text-blue-700">{i + 1}.</span>
-            <Sentence text={it.text} values={shown[i] ? it.answers : undefined} highlight="bg-rose-50 text-rose-700" />
-          </div>
-          {it.answers && (
-            <button
-              onClick={() => setShown({ ...shown, [i]: !shown[i] })}
-              className="mt-2 text-sm font-bold text-blue-700 hover:underline"
-            >
-              {shown[i] ? "정답 숨기기" : "정답 보기"}
-            </button>
-          )}
-        </div>
-      ))}
     </section>
   );
 }

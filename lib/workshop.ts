@@ -18,22 +18,6 @@ export const STEPS = [
   { title: "함께 공유합니다.", minutes: 0 },
 ];
 
-export type ExampleItem = { text: string; answers?: string[] };
-
-// 예시: 중국집에서 짜장면 시키기 (빨간 글씨 답안 포함)
-export const EXAMPLE = {
-  title: "중국집에서 짜장면 시키기",
-  items: [
-    { text: "주문대로 짜장면을 제공한다." },
-    { text: "고춧가루가 뿌려진 짜장면, 계란 프라이를 추가한 짜장면 등 다양하고 복잡한 요구에 적절하게 대응한다." },
-    { text: "고객 식사 중 [] 부족한가를 확인하여 [] 제공한다.", answers: ["반찬이 / 단무지가", "요청 전에 / 새 그릇에 담아"] },
-    { text: "장거리 고객 주문 시에는 [].", answers: ["면이 불 것을 대비하여 다른 방법 / 다른 지점을 소개한다"] },
-    { text: "인원수에 비해 많은 양을 주문하는 경우 [].", answers: ["주문 내용을 재확인 / 드셔 보신 후 추가할 것을 권유한다"] },
-    { text: "단품 메뉴와 요리를 함께 주문하는 경우 [].", answers: ["세트 메뉴로 묶어 할인을 받도록 안내한다"] },
-    { text: "요리 메뉴가 남은 경우 [], [].", answers: ["요청 전", "포장을 원하는지 물어본다"] },
-  ] as ExampleItem[],
-};
-
 export type Item = { id: string; text: string };
 
 export const ITEMS: Item[] = [
